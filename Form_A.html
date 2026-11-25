@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Model A - Laporan Hasil Pengawasan Pemilu</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px double #000;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .header h2 {
+            margin: 0;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+        }
+        .header p {
+            margin: 5px 0 0;
+            font-size: 13px;
+            color: #555;
+        }
+        .form-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .form-title h3 {
+            margin: 0;
+            font-size: 16px;
+            text-decoration: underline;
+        }
+        .form-title input {
+            margin-top: 8px;
+            text-align: center;
+            font-weight: bold;
+            width: 300px;
+            padding: 5px;
+            border: 1px dashed #999;
+        }
+        .section-title {
+            background-color: #e9ecef;
+            padding: 8px 12px;
+            font-weight: bold;
+            font-size: 14px;
+            margin: 20px 0 12px;
+            border-left: 4px solid #b81d24; /* Warna khas Bawaslu */
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="date"],
+        .form-group input[type="time"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+        .row {
+            display: flex;
+            gap: 15px;
+        }
+        .col {
+            flex: 1;
+        }
+        .signature-section {
+            margin-top: 40px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .signature-box {
+            width: 280px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .signature-space {
+            height: 70px;
+        }
+        .btn-group {
+            margin-top: 30px;
+            text-align: right;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 14px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-print {
+            background-color: #b81d24;
+            color: white;
+        }
+        .btn-print:hover {
+            background-color: #96161c;
+        }
+        .btn-reset {
+            background-color: #6c757d;
+            color: white;
+            margin-right: 10px;
+        }
+        .btn-reset:hover {
+            background-color: #5a6268;
+        }
+
+        /* Pengaturan khusus saat dicetak / Print ke PDF */
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+                max-width: 100%;
+            }
+            .btn-group {
+                display: none;
+            }
+            input, textarea, select {
+                border: none !important;
+                background: transparent !important;
+                padding: 0 !important;
+                resize: none;
+            }
+            .form-title input {
+                border-bottom: 1px solid #000 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- KOP SURAT -->
+    <div class="logo-kiri">
+        <img src="logo.png" style="float: left;" alt="Logo Bawaslu" width="50" height="50" class="logo-kiri">
+        <h2>BADAN PENGAWAS PEMILIHAN UMUM<br>KABUPATEN NGADA</h2>
+        <p>Alamat: Jl. T. W. Mengeruda, WA. 082266125966, Email: set.ngada@bawaslu.go.id</p>
+    </div>
+
+    <!-- JUDUL FORMULIR -->
+    <br></br>
+    <div class="form-title">
+        <h3>FORMULIR MODEL A</h3>
+        <div style="font-weight: bold; margin-top: 4px;">LAPORAN HASIL PENGAWASAN PEMILU / PEMILIHAN</div>
+        <input type="text" placeholder="Nomor: .../LHP/PM.01.02/.../2026" value="Nomor: 001/LHP/PM.01.02/11/2026">
+    </div>
+
+    <form id="formA">
+        <!-- BAGIAN I: DATA PENGAWAS -->
+        <div class="section-title">I. DATA PENGAWAS PEMILU</div>
+        
+        <div class="row">
+            <div class="col form-group">
+                <label>Nama Pelaksana Tugas Pengawasan</label>
+                <input type="text" placeholder="Masukkan nama lengkap" required>
+            </div>
+            <div class="col form-group">
+                <label>Jabatan</label>
+                <select>
+                    <option value="Ketua/Anggota Bawaslu Kabupaten/Kota">Ketua/Anggota Bawaslu Kabupaten/Kota</option>
+                    <option value="Staf Sekretariat Bawaslu Kabupaten/Kota">Staf Sekretariat Bawaslu Kabupaten/Kota</option>
+                    <option value="Panwaslu Kecamatan">Panwaslu Kecamatan</option>
+                    <option value="PKD (Pengawas Kelurahan/Desa)">PKD (Pengawas Kelurahan/Desa)</option>
+                    <option value="PTPS (Pengawas TPS)">PTPS (Pengawas TPS)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Nomor Surat Perintah Tugas</label>
+            <input type="text" placeholder="Contoh: 015/KP.01.00/K.XX-01/11/2026" required>
+        </div>
+
+        <!-- BAGIAN II: KEGIATAN PENGAWASAN -->
+        <div class="section-title">II. KEGIATAN PENGAWASAN</div>
+
+        <div class="form-group">
+            <label>1. Tahapan yang Diawasi</label>
+            <input type="text" placeholder="Contoh: Pemutakhiran Data Pemilih / Kampanye / Rekapitulasi Suara" required>
+        </div>
+
+        <div class="form-group">
+            <label>2. Bentuk Pengawasan</label>
+            <select>
+                <option value="Pengawasan Langsung">Pengawasan Langsung</option>
+                <option value="Pengawasan Tidak Langsung">Pengawasan Tidak Langsung</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>3. Pihak yang Diawasi</label>
+            <input type="text" placeholder="Contoh: KPU Kabupaten/Kota, PPK, PPS, Peserta Pemilu, dll." required>
+        </div>
+
+        <div class="row">
+            <div class="col form-group">
+                <label>4. Hari / Tanggal Pengawasan</label>
+                <input type="date" required>
+            </div>
+            <div class="col form-group">
+                <label>Waktu / Pukul</label>
+                <input type="time" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>5. Tempat / Lokasi Pengawasan</label>
+            <input type="text" placeholder="Contoh: Aula Kantor KPU Kabupaten / Lapangan Kecamatan..." required>
+        </div>
+
+        <!-- BAGIAN III: URAIAN HASIL PENGAWASAN -->
+        <div class="section-title">III. URAIAN HASIL PENGAWASAN</div>
+        <div class="form-group">
+            <label>Uraikan secara kronologis dan detail fakta-fakta hasil pengawasan di lapangan:</label>
+            <textarea placeholder="Tuliskan kronologi kejadian, pihak yang terlibat, kondisi di lapangan, serta kesesuaian dengan ketentuan peraturan perundang-undangan..." required></textarea>
+        </div>
+
+        <!-- BAGIAN IV: DUGAAN PELANGGARAN & INFORMASI POTENSI -->
+        <div class="section-title">IV. INFORMASI DUGAAN PELANGGARAN (Diisi jika terdapat dugaan pelanggaran)</div>
+        
+        <div class="form-group">
+            <label>1. Peristiwa / Dugaan Pelanggaran</label>
+            <textarea style="min-height: 70px;" placeholder="Kosongkan atau isi 'Nihil' jika tidak ditemukan dugaan pelanggaran"></textarea>
+        </div>
+
+        <div class="row">
+            <div class="col form-group">
+                <label>2. Tempat Kejadian</label>
+                <input type="text" placeholder="Lokasi dugaan pelanggaran">
+            </div>
+            <div class="col form-group">
+                <label>3. Waktu Kejadian</label>
+                <input type="text" placeholder="Tanggal & jam kejadian">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col form-group">
+                <label>4. Pelaku / Terlapor</label>
+                <input type="text" placeholder="Nama/identitas pihak yang diduga melanggar">
+            </div>
+            <div class="col form-group">
+                <label>5. Saksi-Saksi</label>
+                <input type="text" placeholder="Nama saksi yang mengetahui kejadian">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>6. Alat Bukti / Dokumentasi</label>
+            <input type="text" placeholder="Contoh: Foto dokumentasi, video, salinan berita acara, rekaman suara">
+        </div>
+
+        <!-- TANDA TANGAN -->
+        <div class="signature-section">
+            <div class="signature-box">
+                <p><input type="text" value="Nama Kota, 25 November 2026" style="text-align: center;"></p>
+                <p><strong>Pelaksana Tugas Pengawasan,</strong></p>
+                <div class="signature-space"></div>
+                <p><strong><u><input type="text" placeholder="( Nama Lengkap Pengawas )" style="text-align: center; font-weight: bold;"></u></strong></p>
+                <p><input type="text" placeholder="NIP / Jabatan" style="text-align: center; font-size: 12px;"></p>
+            </div>
+        </div>
+
+        <!-- TOMBOL AKSI -->
+        <div class="btn-group">
+            <button type="reset" class="btn-reset">Reset Form</button>
+            <button type="button" class="btn-print" onclick="window.print()">Cetak / Simpan PDF</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
